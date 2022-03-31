@@ -1,0 +1,15 @@
+participant patient_mobile_app as p
+participant nurse_mobile_app as n 
+participant http_server as h
+participant mqtt_server as q
+participant database_server as d
+
+n -> q: 호출 메시지 구독
+p -> h: 호출
+h -> d: 당직 간호사 조회
+d -> h: 당직 간호사 조회결과
+h -> q: 당직 간호사들에게만 알림 전송
+q -> n: 호출메시지 전송
+
+
+
